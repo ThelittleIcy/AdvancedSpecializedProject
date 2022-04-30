@@ -13,13 +13,14 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         Movement();
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            ScenesManager.Instance.LoadMenu();
+        }
     }
 
     private void Movement()
     {
-
-
-
         Vector2 dir = transform.up * Input.GetAxisRaw("Vertical") + transform.right * Input.GetAxisRaw("Horizontal");
         dir = dir.normalized * m_speed;
         m_rb.velocity = dir;
