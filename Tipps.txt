@@ -1,0 +1,5 @@
+1. in venv Directionary
+cd /d D:\Studium\Bachelor\AdvancedProjekt\AdvancedProject
+venv\Scripts\activate
+2. ml agents 
+mlagents-learn --run-id-Test

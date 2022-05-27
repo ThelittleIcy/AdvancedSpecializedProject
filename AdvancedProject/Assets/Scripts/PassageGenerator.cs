@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PassageGenerator : MonoBehaviour
 {
@@ -13,11 +14,17 @@ public class PassageGenerator : MonoBehaviour
 
     private List<GameObject> m_createdObjects = new List<GameObject>();
 
+    public UnityEvent GenerateNewEvent;
     private void Start()
+    {
+        GenerateNewEvent.AddListener(Generation);
+        GenerateNewEvent.Invoke();
+    }
+
+    private void Generation()
     {
         StartCoroutine(Create());
     }
-
     private IEnumerator Create()
     {
         while(m_createdObjects.Count != m_amount)

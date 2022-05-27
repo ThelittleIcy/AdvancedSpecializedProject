@@ -4,6 +4,7 @@ using UnityEngine;
 using Unity.MLAgents;
 using Unity.MLAgents.Actuators;
 using Unity.MLAgents.Sensors;
+using TMPro;
 
 public class KI_Movement : Agent
 {
@@ -13,10 +14,23 @@ public class KI_Movement : Agent
     private Transform respawn;
 
     [SerializeField]
+    private TMP_Text m_loss;
+    [SerializeField]
+    private TMP_Text m_win;
+    [SerializeField]
+    private ScriptableInt m_lossCounter;
+    [SerializeField]
+    private ScriptableInt m_winCounter;
+
+    [SerializeField]
     private float moveSpeed = 1f;
+
+    [SerializeField]
+    private PassageGenerator m_passage;
     public override void OnEpisodeBegin()
     {
-        transform.position = respawn.position;
+        this.transform.position = respawn.position;
+        m_passage.GenerateNewEvent.Invoke();
     }
     public override void CollectObservations(VectorSensor sensor)
     {
@@ -40,14 +54,18 @@ public class KI_Movement : Agent
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        SetReward(1f);
+        SetReward(+1f);
+        m_winCounter.Value++;
+        m_win.text = m_winCounter.Value.ToString();
         EndEpisode();
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Wall"))
+        if (collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Obstacle"))
         {
             SetReward(-1f);
+            //m_lossCounter.Value++;
+            //m_loss.text = m_lossCounter.Value.ToString();
             EndEpisode();
         }
     }
