@@ -63,8 +63,7 @@ crashlytics-build.properties
 # Output Artifacts (Legacy)
 /models
 /summaries
-# Output Artifacts
-/results
+
 # Output Builds
 /Builds
 

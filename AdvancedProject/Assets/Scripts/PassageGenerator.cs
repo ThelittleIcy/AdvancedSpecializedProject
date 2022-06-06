@@ -17,13 +17,23 @@ public class PassageGenerator : MonoBehaviour
     public UnityEvent GenerateNewEvent;
     private void Start()
     {
-        GenerateNewEvent.AddListener(Generation);
-        GenerateNewEvent.Invoke();
+        Generation();
     }
 
-    private void Generation()
+    public void Generation()
     {
+        m_createdObjects.Clear();
         StartCoroutine(Create());
+    }
+
+    public void Replace()
+    {
+        foreach (GameObject obj in m_createdObjects)
+        {
+            int rndX = Random.Range(-m_length / 2 + 1, m_length / 2 - 1);
+            int rndY = Random.Range(-m_height / 2 + 1, m_height / 2 - 1);
+            obj.transform.position = new Vector3(transform.position.x + rndX, transform.position.y + rndY, 0);
+        }
     }
     private IEnumerator Create()
     {
@@ -62,7 +72,10 @@ public class PassageGenerator : MonoBehaviour
                 CreateNew(transform.position.x + rndX, transform.position.y + rndY);
             }
         }
+        yield break;
     }
+
+
 
     private void CreateNew(float _posX, float _posY)
     {

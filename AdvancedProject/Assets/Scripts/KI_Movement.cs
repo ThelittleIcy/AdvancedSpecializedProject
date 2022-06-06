@@ -30,7 +30,7 @@ public class KI_Movement : Agent
     public override void OnEpisodeBegin()
     {
         this.transform.position = respawn.position;
-        m_passage.GenerateNewEvent.Invoke();
+        m_passage.Replace();
     }
     public override void CollectObservations(VectorSensor sensor)
     {
@@ -54,18 +54,32 @@ public class KI_Movement : Agent
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        SetReward(+1f);
-        m_winCounter.Value++;
-        m_win.text = m_winCounter.Value.ToString();
-        EndEpisode();
+        if (collision.gameObject.CompareTag("Finish"))
+        {
+
+            SetReward(+1f);
+            //m_winCounter.Value++;
+            //m_win.text = m_winCounter.Value.ToString();
+            EndEpisode();
+            Debug.Log("Won");
+        }
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Obstacle"))
+        //if (collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Obstacle"))
+        //{
+        //    SetReward(-1f);
+        //    //m_lossCounter.Value++;
+        //    //m_loss.text = m_lossCounter.Value.ToString();
+        //    EndEpisode();
+        //}
+        if (collision.gameObject.CompareTag("Obstacle"))
         {
             SetReward(-1f);
             //m_lossCounter.Value++;
             //m_loss.text = m_lossCounter.Value.ToString();
+            Debug.Log("Lost");
             EndEpisode();
         }
     }

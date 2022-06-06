@@ -687,6 +687,7 @@ MonoBehaviour:
   m_lossCounter: {fileID: 11400000, guid: b8b4e86ae63e41e479d9e2df37d68c28, type: 2}
   m_winCounter: {fileID: 11400000, guid: eecb90ef898ea3d4bb70fc0a6b3d5d01, type: 2}
   moveSpeed: 5
+  m_passage: {fileID: 2898619584037377016}
 --- !u!114 &4105491823523977164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -902,6 +903,21 @@ MonoBehaviour:
   m_height: 7
   m_length: 10
   m_prefab: {fileID: 2175172770200168365, guid: f18fb5d4518f229499d1f1ac7033d1c1, type: 3}
+  GenerateNewEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2898619584037377016}
+        m_TargetAssemblyTypeName: PassageGenerator, Assembly-CSharp
+        m_MethodName: Generation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7042412934608727697
 GameObject:
   m_ObjectHideFlags: 0
@@ -949,6 +965,21 @@ MonoBehaviour:
   m_height: 7
   m_length: 10
   m_prefab: {fileID: 2175172770200168365, guid: f18fb5d4518f229499d1f1ac7033d1c1, type: 3}
+  GenerateNewEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8649419699183001782}
+        m_TargetAssemblyTypeName: PassageGenerator, Assembly-CSharp
+        m_MethodName: Generation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &1454642648833978618
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -956,14 +987,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4105491823744876568}
     m_Modifications:
-    - target: {fileID: 791201294161980553, guid: a287ac6a0d484a84897c4bd5f3eff030, type: 3}
-      propertyPath: m_Size.x
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 791201294161980553, guid: a287ac6a0d484a84897c4bd5f3eff030, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3230856402188565379, guid: a287ac6a0d484a84897c4bd5f3eff030, type: 3}
       propertyPath: m_Name
       value: Finish
