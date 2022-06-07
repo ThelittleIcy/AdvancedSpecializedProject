@@ -13,11 +13,11 @@ public class ObstacleLogic : MonoBehaviour
                 //Respawn Player
                 collision.gameObject.transform.position = GameManager.Instance.PlayerSpawnPoint.position;
             }
-            else
-            {
-                //Respawn KI
-                collision.gameObject.transform.position = GameManager.Instance.KiSpawnPoint.position;
-            }
+            //else
+            //{
+            //    //Respawn KI
+            //    collision.gameObject.transform.position = GameManager.Instance.KiSpawnPoint.position;
+            //}
         }
     }
 }
