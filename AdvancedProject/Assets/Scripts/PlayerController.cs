@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D m_rb;
 
     [SerializeField]
-    private PassageGenerator m_generator;
+    private List<PassageGenerator> m_generator;
 
     private void Update()
     {
@@ -33,7 +33,10 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Obstacle"))
         {
-            m_generator.Replace();
+            foreach (PassageGenerator passage in m_generator)
+            {
+                passage.Replace();
+            }
         }
     }
 }

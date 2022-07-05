@@ -13,8 +13,6 @@ public class PassageGenerator : MonoBehaviour
     private GameObject m_prefab;
 
     private List<GameObject> m_createdObjects = new List<GameObject>();
-
-    public UnityEvent GenerateNewEvent;
     private void Start()
     {
         Generation();

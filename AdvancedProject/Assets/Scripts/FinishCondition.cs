@@ -6,17 +6,18 @@ public class FinishCondition : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") || collision.CompareTag("KI"))
         {
             //Herausfinden, wer gewonnen hat
             if (collision.TryGetComponent<PlayerController>(out PlayerController player))
             {
-                Debug.Log("Gewonnen");
+                HighscoreManager.Instance.AddPlayerWin();
                 ScenesManager.Instance.LoadWin();
             }
             else
             {
-                Debug.Log("Verloren");
+                KIAgent agent = collision.GetComponent<KIAgent>();
+                HighscoreManager.Instance.AddKIWin();
                 ScenesManager.Instance.LoadLose();
             }
         }
